@@ -63,8 +63,6 @@ def get_flashcards_by_bank(bank_id):
     return cards
 
 
-# ─── Pages publiques ───────────────────────────────────────────
-
 @app.route("/")
 def index():
     return render_template("index.html")
@@ -93,8 +91,6 @@ def team_luka():
 def team_darya():
     return render_template("team/darya.html")
 
-
-# ─── Authentification ──────────────────────────────────────────
 
 @app.route("/signin", methods=["GET", "POST"])
 def signin():
@@ -191,8 +187,6 @@ def modifMdp():
     return render_template("modifMdp.html")
 
 
-# ─── Pages privées ─────────────────────────────────────────────
-
 @app.route("/banques")
 @f.statuts_obligatoires()
 def banques():
@@ -237,35 +231,37 @@ def admin():
 def gestion():
     iduser = session.get("idutilisateur")
     nbcartes = bdd.get_nombrecartes_user(iduser)
-    list_paquet = bdd.get_liste_iduser(iduser)    
-    nb_cartes_maitrisees=bdd.get_nb_cartes_maitrisees(iduser)['nb_cartes_maitrisees']
-    nb_cartes=bdd.nb_cartes(iduser)['nb_cartes']
-    nb_paquets=bdd.get_nb_paquets(iduser)["nb_paquets"]
-    if nb_cartes==0:
-        p_cartes_maitrisees="Aucune carte à réviser"
+    list_paquet = bdd.get_liste_iduser(iduser)
+    nb_cartes_maitrisees = bdd.get_nb_cartes_maitrisees(iduser)['nb_cartes_maitrisees']
+    nb_cartes = bdd.nb_cartes(iduser)['nb_cartes']
+    nb_paquets = bdd.get_nb_paquets(iduser)["nb_paquets"]
+    if nb_cartes == 0:
+        p_cartes_maitrisees = "Aucune carte à réviser"
     else:
-        p_cartes_maitrisees=f"{nb_cartes_maitrisees/nb_cartes*100:.3g} %"
-    nb_cartes_par_boite={}
-    nb_cartes_a_reviser_par_boite={}
-    nb_cartes_a_reviser=0
+        p_cartes_maitrisees = f"{nb_cartes_maitrisees/nb_cartes*100:.3g} %"
+    nb_cartes_par_boite = {}
+    nb_cartes_a_reviser_par_boite = {}
+    nb_cartes_a_reviser = 0
     for d in bdd.get_idboite():
-        idboite=d["idboite"]
-        if idboite==0:
-            nb_cartes_par_boite["Cartes maîtrisées"]=bdd.get_nb_cartes_par_boite(iduser,idboite)["nb_cartes_par_boite"]
+        idboite = d["idboite"]
+        if idboite == 0:
+            nb_cartes_par_boite["Cartes maîtrisées"] = bdd.get_nb_cartes_par_boite(iduser, idboite)["nb_cartes_par_boite"]
         else:
-            nb_cartes_par_boite[f"Boîte {idboite}"]=bdd.get_nb_cartes_par_boite(iduser,idboite)["nb_cartes_par_boite"]
-            tmp=bdd.get_nb_cartes_a_reviser_par_boite(iduser,idboite)
-            if not tmp==None:
-                nb_cartes_a_reviser_par_boite[f"Boîte {idboite}"]=tmp["nb_cartes_a_reviser_par_boite"]
-                nb_cartes_a_reviser+=nb_cartes_a_reviser_par_boite[f"Boîte {idboite}"]
-    param = {'nbcartes': nbcartes,
-             'liste': list_paquet,
-             "p_cartes_maitrisees":p_cartes_maitrisees,
-             "nb_cartes_par_boite":nb_cartes_par_boite,
-             "nb_cartes_a_reviser_par_boite":nb_cartes_a_reviser_par_boite,
-             "nb_cartes":nb_cartes,
-             "nb_paquets":nb_paquets,
-             "nb_cartes_a_reviser":nb_cartes_a_reviser}
+            nb_cartes_par_boite[f"Boîte {idboite}"] = bdd.get_nb_cartes_par_boite(iduser, idboite)["nb_cartes_par_boite"]
+            tmp = bdd.get_nb_cartes_a_reviser_par_boite(iduser, idboite)
+            if tmp is not None:
+                nb_cartes_a_reviser_par_boite[f"Boîte {idboite}"] = tmp["nb_cartes_a_reviser_par_boite"]
+                nb_cartes_a_reviser += nb_cartes_a_reviser_par_boite[f"Boîte {idboite}"]
+    param = {
+        'nbcartes': nbcartes,
+        'liste': list_paquet,
+        "p_cartes_maitrisees": p_cartes_maitrisees,
+        "nb_cartes_par_boite": nb_cartes_par_boite,
+        "nb_cartes_a_reviser_par_boite": nb_cartes_a_reviser_par_boite,
+        "nb_cartes": nb_cartes,
+        "nb_paquets": nb_paquets,
+        "nb_cartes_a_reviser": nb_cartes_a_reviser
+    }
     return render_template("gestion.html", **param)
 
 @app.route("/delete_user/<idutilisateur>")
@@ -289,56 +285,53 @@ def categorie():
 @app.route("/categorie/choix")
 @f.statuts_obligatoires('administrateur')
 def choix_categorie():
-    categories=bdd.get_categories()
+    categories = bdd.get_categories()
     return render_template("categorie/choix.html", categories=categories)
 
 @app.route("/categorie/creation", methods=["GET", "POST"])
 def creation_categorie():
-    
     if request.method == "POST":
-        
-        nomcategorie=request.form.get("nomcategorie")
-        msg={
-        "ok": "La catégorie a bien été ajoutée à la base de données.",
-        "echec": "Echec de l'ajout de la catégorie à la base de données"
+        nomcategorie = request.form.get("nomcategorie")
+        msg = {
+            "ok": "La catégorie a bien été ajoutée à la base de données.",
+            "echec": "Echec de l'ajout de la catégorie à la base de données"
         }
         if bdd.check_category_name(nomcategorie):
-            flash("Ce nom de catégorie est déjà utilisé","danger")
-            categories=bdd.get_categories()
-            return render_template("categorie/choix.html",categories=categories)
-        bdd.create_category(nomcategorie,msg)
-        categories=bdd.get_categories()
+            flash("Ce nom de catégorie est déjà utilisé", "danger")
+            categories = bdd.get_categories()
+            return render_template("categorie/choix.html", categories=categories)
+        bdd.create_category(nomcategorie, msg)
+        categories = bdd.get_categories()
         return render_template("categorie/choix.html", categories=categories)
-
     return render_template("/categorie/creation.html")
 
 @app.route("/categorie/supprimer/<idcategorie>")
 @f.statuts_obligatoires('administrateur')
 def delete_category(idcategorie):
-    msg={
+    msg = {
         "ok": "La catégorie a bien été supprimée de la base de données.",
         "echec": "Echec de suppression de la catégorie dans la base de données"
     }
     bdd.delete_category(idcategorie, msg)
-    categories=bdd.get_categories()
+    categories = bdd.get_categories()
     return render_template("categorie/choix.html", categories=categories)
 
 @app.route("/categorie/renommer/<idcategorie>", methods=["GET", "POST"])
 @f.statuts_obligatoires('administrateur')
 def rename_category(idcategorie):
-    if request.method=="POST":
-        nomcategorie=request.form.get("nomcategorie")
-        msg={
+    if request.method == "POST":
+        nomcategorie = request.form.get("nomcategorie")
+        msg = {
             "ok": "La catégorie a bien été renommée.",
             "echec": "Echec du renommage de la catégorie."
         }
         if bdd.check_category_name(nomcategorie):
-            flash("Ce nom de catégorie est déjà utilisé","danger")
-            categories=bdd.get_categories()
-            return render_template("categorie/choix.html",categories=categories)
+            flash("Ce nom de catégorie est déjà utilisé", "danger")
+            categories = bdd.get_categories()
+            return render_template("categorie/choix.html", categories=categories)
         bdd.rename_category(idcategorie, nomcategorie, msg)
-        categories=bdd.get_categories()
-        return render_template("categorie/choix.html",categories=categories)
+        categories = bdd.get_categories()
+        return render_template("categorie/choix.html", categories=categories)
     return render_template("categorie/modif.html", categorie=categorie)
 
 
@@ -357,18 +350,15 @@ def choix_paquet():
 
 @app.route("/paquet/creation", methods=["GET", "POST"])
 def creation_paquet():
-
     if request.method == "POST":
-
         nompaquet = request.form.get("nom_paquet")
         idcreateur = session.get("idutilisateur")
-        idcategorie=request.form.get("categorie")
-        public = 1 if request.form.get("public") else 0 #Vérifie si la case “Paquet public” est cochée, pour sql
-
-        bdd.create_paquet(nompaquet, idcreateur, public,int(idcategorie))
+        idcategorie = request.form.get("categorie")
+        public = 1 if request.form.get("public") else 0
+        bdd.create_paquet(nompaquet, idcreateur, public, int(idcategorie))
         return redirect("/paquet/choix")
-    categories=bdd.get_categories()
-    return render_template("/paquet/creation.html",categories=categories)
+    categories = bdd.get_categories()
+    return render_template("/paquet/creation.html", categories=categories)
 
 @app.route("/paquet/supprimer/<int:idpaquet>")
 def supprimer_paquet(idpaquet):
@@ -378,24 +368,18 @@ def supprimer_paquet(idpaquet):
 
 @app.route("/paquet/modifier/<int:idpaquet>", methods=["GET", "POST"])
 def modifier_paquet(idpaquet):
-
     iduser = session.get("idutilisateur")
-
     paquet = bdd.get_one_paquet(idpaquet, iduser)
-
-    if request.method == "POST":   #Vérifie si le formulaire a été envoyé
-
+    if request.method == "POST":
         nom = request.form.get("nom_paquet")
-        idcategorie=request.form.get("categorie")
-        public = request.form.get("public")  #Récupère la checkbox
-        public = 1 if public else 0     #Transforme valeur en booléen pour sql
-
-        bdd.update_paquet(idpaquet, nom, public,int(idcategorie))
-
+        idcategorie = request.form.get("categorie")
+        public = request.form.get("public")
+        public = 1 if public else 0
+        bdd.update_paquet(idpaquet, nom, public, int(idcategorie))
         return redirect("/paquet/choix")
-    categories=bdd.get_categories()
-    categories=sorted(categories,key=lambda c: c['idcategorie']!=paquet['idcategorie'])
-    return render_template("paquet/modif.html", paquet=paquet,categories=categories)
+    categories = bdd.get_categories()
+    categories = sorted(categories, key=lambda c: c['idcategorie'] != paquet['idcategorie'])
+    return render_template("paquet/modif.html", paquet=paquet, categories=categories)
 
 @app.route("/updatecarte")
 @f.statuts_obligatoires()
@@ -469,8 +453,6 @@ def supprimer_carte(idcarte):
     return redirect(url_for('cartes', idpaquet=idpaquet))
 
 
-# ─── Révision ─────────────────────────────────────────────
-
 @app.route("/revision")
 @f.statuts_obligatoires()
 def revision():
@@ -503,7 +485,6 @@ def revision_paquet(idpaquet):
     session["revision_carte_ids"] = [c["idcarte"] for c in cartes]
     return redirect(url_for("revision_carte"))
 
-
 @app.route("/revision/carte")
 @f.statuts_obligatoires()
 def revision_carte():
@@ -528,21 +509,21 @@ def afficher_reponse():
 def carte_suivante(idcarte, savais):
     idutilisateur = session.get("idutilisateur")
     revision_actuelle = bdd.get_revision(idutilisateur, idcarte)
-    print(revision_actuelle)
+
     if savais == 1:
-        idboite=revision_actuelle["idboite"] if revision_actuelle else bdd.get_idboite_by_rang(1)["idboite"]
+        idboite = revision_actuelle["idboite"] if revision_actuelle else bdd.get_idboite_by_rang(1)["idboite"]
         rang_actuel = bdd.get_rang_by_idboite(idboite)["rang"]
-        if rang_actuel==5:
-           nouveau_rang=0
-        else: 
-            nouveau_rang = min(rang_actuel + 1, 5)
+        nouveau_rang = min(rang_actuel + 1, 5)
     else:
         nouveau_rang = 1
-    nouveau_idboite=bdd.get_idboite_by_rang(nouveau_rang)["idboite"]
+
+    nouveau_idboite = bdd.get_idboite_by_rang(nouveau_rang)["idboite"]
+
     if revision_actuelle:
         bdd.update_revision(idutilisateur, idcarte, nouveau_idboite)
     else:
         bdd.add_revision(idutilisateur, idcarte, nouveau_idboite)
+
     session["revision_index"] += 1
     session["show_answer"] = False
     return redirect(url_for("revision_carte"))
