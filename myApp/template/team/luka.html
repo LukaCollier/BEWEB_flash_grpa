@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="fr">
+  {% include("layout/header.html") %}
+
+  <body>
+    {% include("layout/nav.html") %}
+
+    <header id="head" class="secondary"></header>
+
+    <div class="container">
+      <ol class="breadcrumb">
+        <li><a href="/">Accueil</a></li>
+        <li><a href="/about">Équipe</a></li>
+        <li class="active">Luka Collier</li>
+      </ol>
+
+      <div class="row">
+        <!-- Contenu principal -->
+        <article class="col-sm-8 maincontent">
+          <header class="page-header">
+            <h1 class="page-title">Luka Collier</h1>
+          </header>
+
+          <!-- Intro -->
+          <div class="row" style="margin-bottom:30px;">
+            <div class="col-sm-4">
+              <img src="{{ url_for('static', filename='images/luka.jpg') }}" 
+                   alt="Luka Collier" 
+                   class="img-rounded" 
+                   style="width:100%;" />
+            </div>
+            <div class="col-sm-8">
+              <h3>Profil</h3>
+              <p>Étudiant ingénieur à l'ENAC, passionné par l'informatique et la cybersécurité.</p>
+              <p>Permis B – véhiculé</p>
+            </div>
+          </div>
+
+          <!-- Formation -->
+          <h3>Formation</h3>
+          <ul>
+            <li><strong>2025 - aujourd'hui</strong> — ENAC, Toulouse (Cycle ingénieur)</li>
+            <li><strong>2023 - 2025</strong> — CPGE MP2I puis MPI*, Lycée Colbert (Tourcoing)</li>
+            <li><strong>2020 - 2023</strong> — Bac général (Mention Très Bien, félicitations du jury)</li>
+            <li><strong>2016 - 2020</strong> — Brevet (Mention Très Bien)</li>
+          </ul>
+
+          <!-- Expérience -->
+          <h3>Expériences professionnelles</h3>
+          <ul>
+            <li>
+              <strong>2020</strong> — Stage d'observation, Collège Lucie Aubrac  
+              <p>Découverte du métier de professeur documentaliste.</p>
+            </li>
+            <li>
+              <strong>2019</strong> — Stage, Sopra Steria  
+              <p>Observation d’un service de maintenance informatique pour entreprises.</p>
+            </li>
+          </ul>
+
+          <!-- Compétences -->
+          <h3>Compétences</h3>
+          <h4>Informatique</h4>
+          <p><strong>Langages :</strong> C, OCaml, Python, SQL, PHP, LaTeX</p>
+          <p><strong>Outils :</strong> GitHub, VS Code, Emacs, Office 365</p>
+
+          <h4>Personnelles</h4>
+          <p>À l’écoute, organisé, gestion de groupe, ponctuel</p>
+
+          <!-- Langues -->
+          <h3>Langues</h3>
+          <ul>
+            <li>Français : langue maternelle</li>
+            <li>Anglais : courant</li>
+            <li>Espagnol : intermédiaire</li>
+          </ul>
+
+          <!-- Engagement -->
+          <h3>Engagement</h3>
+          <ul>
+            <li>Les explorateurs de l’engagement — association citoyenne européenne</li>
+          </ul>
+
+          <!-- Centres d'intérêt -->
+          <h3>Centres d’intérêt</h3>
+          <ul>
+            <li>Cyclisme</li>
+            <li>Informatique</li>
+            <li>Jeux vidéo</li>
+            <li>Cinéma</li>
+          </ul>
+
+          <a href="/about" class="btn btn-action" style="margin-top:20px;">
+            ← Retour à l'équipe
+          </a>
+        </article>
+
+        <!-- Sidebar -->
+        <aside class="col-sm-4 sidebar sidebar-right">
+          <div class="widget">
+            <h4>Contact</h4>
+            <ul class="list-unstyled">
+              <li>
+                <a href="mailto:lukacol59@gmail.com">
+                  <i class="fa fa-envelope"></i> lukacol59@gmail.com
+                </a>
+              </li>
+              <li>
+                <a href="https://www.linkedin.com/in/luka-collier-b63495276/" target="_blank">
+                  <i class="fa fa-linkedin"></i> LinkedIn
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/LukaCollier" target="_blank">
+                  <i class="fa fa-github"></i> GitHub
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://lukacollier.github.io/" target="_blank">
+                    <i class="fa fa-code"></i> Portfolio
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="widget">
+            <h4>L'équipe</h4>
+            <ul class="list-unstyled list-spaces">
+              <li><a href="/team/camille">Camille</a></li>
+              <li><a href="/team/etienne">Étienne</a></li>
+              <li><a href="/team/luka">Luka</a></li>
+              <li><a href="/team/darya">Darya</a></li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </div>
+
+    {% include("layout/footer.html") %}
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="static/js/headroom.min.js"></script>
+    <script src="static/js/jQuery.headroom.min.js"></script>
+    <script src="static/js/template.js"></script>
+  </body>
+</html>

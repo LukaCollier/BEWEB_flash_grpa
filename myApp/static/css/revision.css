@@ -1,0 +1,166 @@
+/*************************************************/
+/* Page principale de l'onglet Révision         */
+/************************************************/
+
+/* Zone de présentation en haut de la page de révision */
+.revision-hero {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+/* Titre principal */
+.page-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 42px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+/* Icône à côté du titre  */
+.page-title-icon {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    vertical-align: middle;
+}
+
+/* Message de bienvenue sur la page*/
+.welcome-text {
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+/* Sous-titre explicatif pour l'utilisateur */
+.subtitle {
+    color: #666;
+    font-size: 17px;
+}
+
+/* Cartes d'actions */
+.revision-actions {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-bottom: 50px;
+}
+
+/* Carte générique */
+.revision-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 30px;
+    width: 320px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+
+
+/* Titres des cartes (révision,public, statistiques) */
+.revision-card h2,
+.revision-card h3 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    margin-bottom: 15px;
+}
+
+/* Texte des cartes */
+.revision-card p {
+    color: #666;
+    min-height: 60px;
+}
+
+/*************************************************************/
+/*   Icones des différentes cartes de la page révision       */
+/*************************************************************/
+
+
+/* Images/icônes de la page révision */
+.revision-icon {
+    width: 32px;
+    height: 32px;
+    margin-right: 10px;
+    vertical-align: middle;
+    object-fit: contain;
+}
+
+/* Image cerveau en particulier  */
+.brain-icon {
+    width: 48px;
+    height: 48px;
+    position: relative;
+    top: -2px;
+}
+
+
+/*************************************************/
+/*         Boutons page de révision             */
+/************************************************/
+
+/* Boutons principaux de la page */
+.revision-btn,
+.secondary-btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 12px 22px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+/* Bouton "Commencer une révision" */
+.revision-btn {
+    background: #c94d05;
+    color: white;
+}
+
+
+
+/* Bouton secondaire */
+.secondary-btn {
+    background: #f4f4f4;
+    color: #333;
+}
+
+
+
+
+/*************************************************/
+/*         Pour la carte statistiques            */
+/************************************************/
+
+.stats {
+    margin-top: 20px;
+}
+
+.stat-item {
+    margin-bottom: 15px;
+}
+
+.stat-number {
+    display: block;
+    font-size: 26px;
+    font-weight: bold;
+    color: #856b05;
+}
+
+.stat-label {
+    color: #777;
+    font-size: 14px;
+}
+
+
+
+
+
+
+
+
+

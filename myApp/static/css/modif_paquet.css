@@ -1,0 +1,89 @@
+body {
+    background: linear-gradient(to right, #eef2f7, #dfe9f3);
+    font-family: Arial, sans-serif;
+}
+
+/* CONTENEUR */
+
+.edit-container {
+    max-width: 650px;
+    margin: 80px auto;
+    background: white;
+    padding: 50px;
+    border-radius: 25px;
+    box-shadow: 0 12px 35px rgba(0,0,0,0.12);
+}
+
+/* TITRE */
+
+.edit-title {
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 40px;
+}
+
+/* LABEL */
+
+.form-group label {
+    display: block;
+    margin-bottom: 12px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #34495e;
+}
+
+/* INPUT */
+
+.input-edit {
+    width: 100%;
+    height: 60px;
+    border: 2px solid #dcdde1;
+    border-radius: 15px;
+    padding-left: 20px;
+    font-size: 20px;
+    transition: 0.25s;
+}
+
+
+/* BOUTON */
+
+.btn-save {
+    width: 100%;
+    height: 60px;
+    margin-top: 35px;
+    border: none;
+    border-radius: 15px;
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.icon-save {
+    width: 1em;
+    height: 1em;
+    vertical-align: -0.15em;
+    margin-right: 8px;
+}
+
+
+@media screen and (max-width: 768px) {
+
+    .edit-container {
+        width: 90%;
+        padding: 35px;
+    }
+
+    .edit-title {
+        font-size: 32px;
+    }
+
+    .input-edit {
+        font-size: 18px;
+    }
+}
+

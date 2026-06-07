@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+{% include "layout/header.html" %}
+
+<body>
+
+{% include "layout/nav.html" %}
+
+<header id="head" class="secondary"></header>
+
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='css/revision_paquet.css') }}">
+
+<div class="container">
+
+    <div class="flashcard">
+        <div class="card-content">
+            {% if show_answer %}
+                {{ carte.reponse }}
+            {% else %}
+                {{ carte.question }}
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="buttons">
+
+        {% if not show_answer %}
+
+        <form method="POST" action="{{ url_for('afficher_reponse') }}">
+            <button class="revision-answer-btn">
+                Voir la réponse
+            </button>
+        </form>
+
+        {% else %}
+
+        <p style="text-align:center; color:#888; margin-bottom:20px;">
+            Est-ce que vous connaissiez la réponse ?
+        </p>
+
+        <div style="display:flex; justify-content:center; gap:20px;">
+
+            <form method="POST"
+                  action="{{ url_for('carte_suivante', idcarte=carte.idcarte, savais=0) }}">
+                <button class="revision-next-btn" style="background:#e74c3c;">
+                    ✗ Je ne savais pas
+                </button>
+            </form>
+
+            <form method="POST"
+                  action="{{ url_for('carte_suivante', idcarte=carte.idcarte, savais=1) }}">
+                <button class="revision-next-btn" style="background:#2ecc71;">
+                    ✓ Je savais
+                </button>
+            </form>
+
+        </div>
+
+        {% endif %}
+
+    </div>
+
+</div>
+
+{% include "layout/footer.html" %}
+
+</body>
+</html>

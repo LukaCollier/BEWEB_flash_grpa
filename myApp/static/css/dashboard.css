@@ -1,0 +1,175 @@
+.enveloppe {
+  background: white;
+  border-radius: 16px;
+  padding: 30px;
+  max-width: 1100px;
+  margin: auto;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.graph{
+  display: grid;
+  gap: 15px;
+  margin-bottom: 30px;
+  grid-template-columns: 1fr 1fr;
+}
+
+/* HEADER */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* STATS */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.card {
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.card h3 {
+  font-size: 14px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.value {
+  font-size: 28px;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* COLORS */
+.streak {
+  background: linear-gradient(135deg, #f5d6b3, #e6b98d);
+}
+
+.cards {
+  background: linear-gradient(135deg, #8e8cf3, #6c6ae4);
+  color: white;
+}
+
+.accuracy {
+  background: linear-gradient(135deg, #9be3b0, #6cd28d);
+}
+
+/* MAIN GRID */
+.dashboard-main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+/* DECKS */
+.decks h2 {
+  margin-bottom: 15px;
+}
+
+.deck-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+
+.deck {
+  border: 1px solid #eee;
+  border-radius: 12px;
+  padding: 15px;
+}
+
+.deck h3 {
+  margin-bottom: 5px;
+}
+
+.progress {
+  height: 6px;
+  background: #eee;
+  border-radius: 10px;
+  margin: 10px 0;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(to right, #ff7a7a, #7a6bff);
+}
+
+/* FOOTER */
+.deck-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* BUTTONS */
+button {
+  border: none;
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  background: #eee;
+}
+
+button.primary {
+  background: #6c6ae4;
+  color: white;
+}
+
+/* ACTIVITY */
+.activity {
+  border: 1px solid #eee;
+  border-radius: 12px;
+  padding: 15px;
+}
+
+.activity h3 {
+  margin-bottom: 10px;
+}
+
+.activity ul {
+  list-style: none;
+}
+
+.activity li {
+  font-size: 14px;
+  margin-bottom: 10px;
+  color: #555;
+}
+
+/* REVIEW */
+.review {
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+/* RESPONSIVE */
+@media(max-width: 200px) {
+  .main {
+    grid-template-columns: 1fr;
+  }
+
+  .deck-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stats {
+    grid-template-columns: 1fr;
+  }
+}
+
+

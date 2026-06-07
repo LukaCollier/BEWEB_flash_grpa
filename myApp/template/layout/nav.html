@@ -1,0 +1,88 @@
+<!-- Fixed navbar -->
+<div class="navbar navbar-inverse navbar-fixed-top headroom">
+  <div class="container">
+    <div class="navbar-header">
+      <button
+        type="button"
+        class="navbar-toggle"
+        data-toggle="collapse"
+        data-target=".navbar-collapse"
+      >
+        <span class="icon-bar"></span> <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">
+        <img src="static/images/logo.png" alt="Flashcards ENAC" />
+      </a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav pull-right">
+
+        <!-- Liens publics -->
+        <li class="{{ 'active' if request.path == '/' }}">
+          <a href="/">Accueil</a>
+        </li>
+        <li class="{{ 'active' if request.path == '/about' or request.path.startswith('/team') }}">
+          <a href="/about">À propos de nous</a>
+        </li>
+
+        <!-- Dropdown Gestion paquet (connecté uniquement) -->
+        {% if session.get('idUser') %}
+        <li class="{{ 'active' if request.path.startswith('/revision') }}">
+          <a href="/revision">Révision</a>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            Gestion paquet <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="/banques">Banques</a></li>
+            <li><a href="/paquet">Paquet</a></li>
+            <li><a href="/listepaquet">Liste paquets publics</a></li>
+          </ul>
+        </li>
+        {% endif %}
+
+        <!-- Lien gestion (gestionnaire et administrateur) -->
+        {% if session.get('statut') == 'gestionnaire' or session.get('statut') == 'administrateur' %}
+        <li class="{{ 'active' if request.path == '/gestion' }}">
+          <a href="/gestion">Gestion</a>
+        </li>
+        {% endif %}
+
+        <!-- Lien administration (administrateur uniquement) -->
+        {% if session.get('statut') == 'administrateur' %}
+        <li class="dropdown">
+          <a href="#" class="dropbtn">Administration ▾</a>
+
+          <ul class="dropdown-content">
+            <li class="{{ 'active' if request.path == '/admin' }}">
+              <a href="/admin">Utilisateurs</a>
+            </li>
+
+            <li class="{{ 'active' if request.path == '/categorie' }}">
+              <a href="/categorie">Catégories</a>
+            </li>
+          </ul>
+        </li>
+        {% endif %}
+
+        <!-- Nom et déconnexion si connecté -->
+        {% if session.get('idUser') %}
+        <li class="navbar-text" style="color:white;">
+          {{ session.get('prenom') }} {{ session.get('nom') }}
+        </li>
+        <li>
+          <a class="btn" href="/logout">Se déconnecter</a>
+        </li>
+
+        {% else %}
+        <li>
+          <a class="btn" href="/signin">CONNEXION / INSCRIPTION</a>
+        </li>
+        {% endif %}
+
+      </ul>
+    </div>
+  </div>
+</div>

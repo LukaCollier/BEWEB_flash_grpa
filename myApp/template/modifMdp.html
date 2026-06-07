@@ -1,0 +1,107 @@
+
+  <!DOCTYPE html>
+<html lang="en">
+  {%include("layout/header.html") %}
+  <body>
+    <!-- Fixed navbar -->
+    {%include("layout/nav.html") %}
+    <!-- /.navbar -->
+
+    <header id="head" class="secondary"></header>
+
+    <!-- container -->
+    <div class="container">
+      <ol class="breadcrumb">
+        <li><a href="/">Accueil</a></li>
+        <li class="active">Accès utilisateur</li>
+      </ol>
+
+      <div class="row">
+        <article class="col-xs-12 maincontent">
+          <header class="page-header">
+            <h1 class="page-title">Modification de mot de passe </h1>
+          </header>
+
+          <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <h3 class="thin text-center">Changement de mot de passe</h3>
+                <p class="text-center text-muted">
+                  Votre nouveau mot de passe
+                </p>
+                <hr />
+
+                
+                  {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                      {% for category, message in messages %}
+                    <div class="alert alert-{{category}}">
+                      {{ message }}
+                    </div>
+                      {% endfor %}
+                    {% endif %}
+                  {% endwith %}
+
+                  
+                <form method="POST" action="/modifMdp" >
+                  <div class="top-margin">
+                    <label>Ancien mot de passe</label>
+                    <input type="password" name="ancienmdp" class="form-control" placeholder="Votre ancien mot de passe" />
+                  </div>
+                  <div class="top-margin">
+                    <label>Nouveau mot de passe</label>
+                    <input type="password" name="nvmdp" class="form-control" placeholder="Votre nouveau mot de passe" />
+                  </div>
+                  <div class="top-margin">
+                    <label>Confirmer votre nouveau mot de passe <span class="text-danger">*</span></label>
+                    <input type="password" name="confirmmdp" class="form-control" placeholder="confirmation de votre mot de passe" />
+                  </div>
+
+
+                  {% if error %}
+                  <div class="top-margin">
+                    <p style="color:red;">{{ error }}</p>
+                  </div>
+                  {% endif %}
+
+
+                  {% if success %}
+                  <div class="top-margin">
+                    <p style="color:green;">{{ success }}</p>
+                  </div>
+                  {% endif %}
+
+                  <hr />
+
+                  <div class="row">
+                    <div class="col-lg-8">
+                      <b><a href="">Mot de passe oublié ?</a></b>
+                    </div>
+                    <div class="col-lg-4 text-right">
+                      <button class="btn btn-action" type="submit">
+                        Valider
+                      </button>
+                    </div>
+                  </div>
+                </form>
+
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+    <!-- /container -->
+
+    {% include("layout/footer.html") %}
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="static/js/headroom.min.js"></script>
+    <script src="static/js/jQuery.headroom.min.js"></script>
+    <script src="static/js/template.js"></script>
+  </body>
+</html>
+
+
+

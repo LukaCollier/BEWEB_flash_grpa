@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+{% include "layout/header.html" %}
+
+<body>
+
+{% include "layout/nav.html" %}
+
+<header id="head" class="secondary"></header>
+
+<!-- MODIFIÉ : <link> CSS déplacé ici, après le nav, pour ne pas interférer avec Bootstrap -->
+<link rel="stylesheet" href="{{ url_for('static', filename='css/paquet.css') }}">
+
+<div class="container page-wrapper">
+
+    <ol class="breadcrumb">
+        <li><a href="/">Accueil</a></li>
+        <li><a href="/paquet/choix">Mes paquets</a></li>
+        <li class="active">Cartes</li>
+    </ol>
+
+    <h1 class="title">Cartes du paquet</h1>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="alert alert-{{ category }}">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    <a href="/cartes/{{ idpaquet }}/ajouter" class="btn btn-action" style="margin-bottom:20px;">
+        + Ajouter une carte
+    </a>
+
+    {% if cartes %}
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Question</th>
+                <th>Réponse</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for carte in cartes %}
+            <tr>
+                <td>{{ carte.question }}</td>
+                <td>{{ carte.reponse }}</td>
+                <td>
+                    <a href="/cartes/modifier/{{ carte.idcarte }}" class="btn btn-default btn-sm">Modifier</a>
+                    <a href="/cartes/supprimer/{{ carte.idcarte }}" class="btn btn-danger btn-sm"
+                       onclick="return confirm('Supprimer cette carte ?')">Supprimer</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p class="text-muted">Aucune carte dans ce paquet pour le moment.</p>
+    {% endif %}
+
+</div>
+
+{% include "layout/footer.html" %}
+
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+{% include "layout/header.html" %}
+
+<body>
+
+{% include "layout/nav.html" %}
+
+<header id="head" class="secondary"></header>
+
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='css/paquet.css') }}">
+
+<div class="container">
+
+    <ol class="breadcrumb">
+        <li><a href="/">Accueil</a></li>
+        <li class="active">Catégories</li>
+    </ol>
+
+    <h1 class="page-title">Catégories</h1>
+
+    <p class="welcome-text">
+        Bienvenue {{ session.get('prenom') }} {{ session.get('nom') }} !
+    </p>
+
+    <p class="subtitle">
+      Créez, modifiez ou supprimez une catégorie. 
+    </p>
+
+    <div class="deck-container">
+
+        <!-- CHOISIR LE PAQUET DE CARTES -->
+        <a href="/categorie/choix" class="deck-link">
+
+            <div class="deck-card">
+
+                <div class="deck-icon">
+                    <img src="{{ url_for('static', filename='images/folder.png') }}"
+                         alt="Choisir"
+                         class="deck-img">
+
+                </div>
+
+                <h3>Listes des catégories</h3>
+
+            </div>
+
+        </a>
+
+        <!-- CREER LE PAQUET DE CARTES-->
+        <a href="/categorie/creation" class="deck-link">
+
+            <div class="deck-card">
+
+                <div class="deck-icon">
+                    <img src="{{ url_for('static', filename='images/plus.png') }}"
+                         alt="Créer"
+                         class="deck-img">
+
+                </div>
+
+                <h3>Créer une catégorie</h3>
+
+            </div>
+
+        </a>
+
+    </div>
+
+</div>
+
+{% include "layout/footer.html" %}
+
+</body>
+</html>

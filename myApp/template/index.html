@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% include "layout/header.html" %}
+  <body class="home">
+    <!-- Fixed navbar -->
+    {% include "layout/nav.html" %}
+    
+    <!-- Header -->
+    <header id="head">
+      <div class="container">
+        <div class="row">
+          <h1 class="lead">APPRENEZ MIEUX, RÉVISEZ PLUS VITE</h1>
+          <p class="tagline">
+            Progressus — L'application de flashcards avec répétition espacée pour tous les étudiants
+          </p>
+          <p>
+            <a class="btn btn-default btn-lg" role="button">EN SAVOIR PLUS</a>
+            <a class="btn btn-action btn-lg" href="/signin" role="button">COMMENCER MAINTENANT</a>
+          </p>
+        </div>
+      </div>
+    </header>
+    <!-- /Header -->
+
+    <!-- Intro -->
+    <div class="container text-center">
+      <br />
+      <br />
+      <h2 class="thin">La méthode qui a fait ses preuves, enfin numérisée</h2>
+      <p class="text-muted">
+        Les flashcards sont l'un des outils d'apprentissage les plus efficaces qui soit.<br />
+        Associées à la répétition espacée, elles vous permettent de mémoriser durablement et sans effort inutile.
+      </p>
+    </div>
+    <!-- /Intro-->
+
+    <!-- Highlights - jumbotron -->
+    <div class="jumbotron top-space">
+      <div class="container">
+        <h3 class="text-center thin">Pourquoi utiliser Progressus ?</h3>
+
+        <div class="row">
+          <div class="col-md-3 col-sm-6 highlight">
+            <div class="h-caption">
+              <h4><i class="fa fa-cogs fa-5"></i>Système de Leitner</h4>
+            </div>
+            <div class="h-body text-center">
+              <p>
+                Notre application repose sur le système de Leitner : les cartes que vous maîtrisez sont révisées moins souvent, celles que vous ne connaissez pas reviennent plus vite. Un algorithme simple et redoutablement efficace.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-6 highlight">
+            <div class="h-caption">
+              <h4><i class="fa fa-flash fa-5"></i>Révisions ciblées</h4>
+            </div>
+            <div class="h-body text-center">
+              <p>
+                Chaque session de révision ne vous présente que les cartes dues ce jour-là. Fini le temps perdu à revoir ce que vous savez déjà — concentrez-vous sur ce qui compte vraiment.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-6 highlight">
+            <div class="h-caption">
+              <h4><i class="fa fa-heart fa-5"></i>Paquets partagés</h4>
+            </div>
+            <div class="h-body text-center">
+              <p>
+                Créez vos propres paquets de flashcards ou profitez de ceux partagés par la communauté. Copiez un paquet public dans votre espace personnel et révisez à votre rythme.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-6 highlight">
+            <div class="h-caption">
+              <h4><i class="fa fa-smile-o fa-5"></i>Suivi de progression</h4>
+            </div>
+            <div class="h-body text-center">
+              <p>
+                Visualisez votre progression grâce à un tableau de bord clair : nombre de cartes par boîte, cartes à réviser aujourd'hui, et pourcentage de cartes maîtrisées.
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- /row  -->
+      </div>
+    </div>
+    <!-- /Highlights -->
+
+    <!-- container -->
+    <div class="container">
+      <h2 class="text-center top-space">Questions fréquentes</h2>
+      <br />
+
+      <div class="row">
+        <div class="col-sm-6">
+          <h3>Comment fonctionne la répétition espacée ?</h3>
+          <p>
+            Les cartes sont organisées en 5 boîtes. Une carte bien répondue avance dans la boîte suivante et sera révisée plus tard (1, 3, 7, 14 ou 30 jours). Une carte mal répondue retourne en boîte 1. Plus vous maîtrisez une carte, moins vous la voyez souvent.
+          </p>
+        </div>
+        <div class="col-sm-6">
+          <h3>Puis-je utiliser les paquets d'autres étudiants ?</h3>
+          <p>
+            Oui ! Vous pouvez consulter le catalogue des paquets publics partagés par la communauté et les copier dans votre espace personnel pour les réviser de manière indépendante.
+          </p>
+        </div>
+      </div>
+      <!-- /row -->
+
+      <div class="row">
+        <div class="col-sm-6">
+          <h3>Qui peut créer un compte ?</h3>
+          <p>
+            Tout le monde peut créer un compte utilisateur gratuitement. Un administrateur peut également gérer les matières et catégories pour mieux organiser les paquets disponibles.
+          </p>
+        </div>
+        <div class="col-sm-6">
+          <h3>Comment créer mes propres flashcards ?</h3>
+          <p>
+            Une fois connecté, rendez-vous dans votre espace personnel pour créer un nouveau paquet, y ajouter des cartes recto/verso, et choisir de le garder privé ou de le partager avec la communauté.
+          </p>
+        </div>
+      </div>
+      <!-- /row -->
+
+      <div class="jumbotron top-space">
+        <h4>
+          Prêt à booster votre apprentissage ? Créez votre compte gratuitement et commencez à réviser avec la méthode qui a fait ses preuves. Vos examens ne vous feront plus peur.
+        </h4>
+        <p class="text-right">
+          <a class="btn btn-primary btn-large" href="/signin">Commencer »</a>
+        </p>
+      </div>
+    </div>
+    <!-- /container -->
+
+    <!-- Social links -->
+    <section id="social">
+      <div class="container">
+        <div class="wrapper clearfix">
+          <div class="addthis_toolbox addthis_default_style">
+            <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+            <a class="addthis_button_tweet"></a>
+            <a class="addthis_button_linkedin_counter"></a>
+            <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- /social links -->
+
+    {% include "layout/footermain.html" %}
+
+    <!-- JavaScript libs are placed at the end of the document so the pages load faster -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="static/js/headroom.min.js"></script>
+    <script src="static/js/jQuery.headroom.min.js"></script>
+    <script src="static/js/template.js"></script>
+  </body>
+</html>

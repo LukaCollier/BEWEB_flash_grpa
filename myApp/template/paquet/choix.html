@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+{% include "layout/header.html" %}
+
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='css/paquet.css') }}">
+
+<body>
+
+{% include "layout/nav.html" %}
+
+<header id="head" class="secondary"></header>
+
+<div class="container page-wrapper">
+
+    <h1 class="title">Mes paquets</h1>
+
+    <p class="subtitle">
+        Sélectionnez un paquet ou créez-en un nouveau
+    </p>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="alert alert-{{ category }}">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    <!-- GRID -->
+    <div class="grid">
+
+        <!-- PAQUETS -->
+        {% for paquet in paquets %}
+
+            <div class="card">
+
+                <!-- DATE -->
+                <div class="card-date">
+                    {{ paquet.datecreation }}
+                </div>
+
+                <!-- BADGE PUBLIC / PRIVÉ -->
+                {% if paquet.public == 1 %}
+                    <div class="badge public">Public</div>
+                {% else %}
+                    <div class="badge private">Privé</div>
+                {% endif %}
+
+                <!-- TITRE -->
+                <div class="card-title">
+                    {{ paquet.nompaquet }}
+                </div>
+
+                <!-- ACTIONS -->
+                <div class="card-actions">
+
+                    <!-- VOIR LES CARTES -->
+                    <a href="/cartes/{{ paquet.idpaquet }}" class="btn-edit">
+                        📋 Voir les cartes
+                    </a>
+
+                    <!-- MODIFIER -->
+                    <a href="/paquet/modifier/{{ paquet.idpaquet }}" class="btn-edit">
+                        <img src="/static/images/compose.png"
+                             alt="Modifier"
+                             class="icon-edit">
+                        Modifier
+                    </a>
+
+                    <!-- SUPPRIMER -->
+                    <a href="/paquet/supprimer/{{ paquet.idpaquet }}"
+                       class="btn-delete"
+                       onclick="return confirm('Supprimer ce paquet ?')">
+                        <img src="{{ url_for('static', filename='images/bin.png') }}"
+                             alt="Supprimer"
+                             class="icon-delete">
+                        Supprimer
+                    </a>
+
+                </div>
+
+            </div>
+
+        {% endfor %}
+
+        <!-- CREER -->
+        <a href="/paquet/creation" class="card add">
+            <div style="font-size:80px;">+</div>
+        </a>
+
+    </div>
+
+</div>
+
+{% include "layout/footer.html" %}
+
+</body>
+</html>

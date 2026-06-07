@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+{% include "layout/header.html" %}
+
+<body>
+
+{% include "layout/nav.html" %}
+
+<header id="head" class="secondary"></header>
+
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='css/revision_choix.css') }}">
+
+
+<div class="container">
+
+    <ol class="breadcrumb">
+        <li><a href="/">Accueil</a></li>
+        <li><a href="/revision">Révision</a></li>
+        <li class="active">Choix du paquet</li>
+    </ol>
+
+    
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="alert alert-{{ category }}">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+    
+
+    <h1 class="page-title">
+
+        <img
+            src="{{ url_for('static', filename='images/stack-of-books.png') }}"
+            alt="Paquets"
+            class="page-title-icon">
+
+        Choisissez un paquet à réviser
+
+    </h1>
+
+    <p class="subtitle">
+        Sélectionnez un paquet pour démarrer
+    </p>
+
+        {% if categories %}
+
+            {% for categorie, paquets in categories.items() %}
+
+                <div class="categorie-block">
+
+                    <h2>
+
+                        <img
+                            src="{{ url_for('static', filename='images/folder.png') }}"
+                            alt="Catégorie"
+                            class="folder-icon">
+
+                        {{ categorie }}
+
+                    </h2>
+
+                    {% for paquet in paquets %}
+
+                        <div class="paquet-card">
+
+                            <span class="nom-paquet">
+                                {{ paquet.nompaquet }}
+                            </span>
+
+                            <a href="{{ url_for('revision_paquet',
+                                                idpaquet=paquet.idpaquet) }}"
+                            class="play-btn">
+
+                                <img
+                                    src="{{ url_for('static', filename='images/play.png') }}"
+                                    alt="Play"
+                                    class="play-icon">
+
+                            </a>
+
+                        </div>
+                        <br>
+                    {% endfor %}
+
+                </div>
+
+            {% endfor %}
+
+        {% else %}
+
+            <div class="alert alert-info">
+
+                <h4>Aucun paquet disponible</h4>
+
+                <p>
+                    Absence paquet de révision
+                </p>
+
+                <a href="/paquet/creation" class="btn btn-primary">
+                    Créer un paquet
+                </a>
+
+            </div>
+
+        {% endif %}
+</div>
+
+{% include "layout/footer.html" %}
+
+</body>
+</html>

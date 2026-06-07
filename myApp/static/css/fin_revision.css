@@ -1,0 +1,41 @@
+
+/*'avoir tout le contenu de fin de révision parfaitement centré*/
+.finish-container {
+    min-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/*afficher « Fin de révision » de façon visible.*/
+.finish-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    font-size: 5rem;
+    margin-bottom: 25px;
+}
+
+
+/* pour l'image party-popper*/
+.finish-icon {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+}
+
+/*texte explicatif sous le titre de la page de fin*/
+.finish-text {
+    font-size: 2rem;
+    margin-bottom: 35px;
+}
+
+/*pour le boutton de fin*/
+
+.finish-btn {
+    font-size: 1.8rem;
+    padding: 18px 45px;
+    border-radius: 10px;
+}

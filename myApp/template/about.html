@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  {%include("layout/header.html") %}
+
+  <body>
+    <!-- Fixed navbar -->
+    {%include("layout/nav.html") %}
+    <!-- /.navbar -->
+
+    <header id="head" class="secondary"></header>
+
+    <!-- container -->
+    <div class="container">
+      <ol class="breadcrumb">
+        <li><a href="/">Home</a></li>
+        <li class="active">About</li>
+      </ol>
+
+      <div class="row">
+        <!-- Article main content -->
+        <article class="col-sm-8 maincontent">
+          <header class="page-header">
+            <h1 class="page-title">À propos de nous</h1>
+          </header>
+          <h3>Notre équipe</h3>
+          <p>Nous sommes quatre webmasters travaillant ensemble sur ce projet.</p>
+
+          <div class="row" style="margin-top:30px;">
+            <div class="col-sm-6" style="margin-bottom:20px;">
+              <a href="/team/camille">
+                <h4>Camille</h4>
+              </a>
+            </div>
+            <div class="col-sm-6" style="margin-bottom:20px;">
+              <a href="/team/etienne">
+                <h4>Etienne</h4>
+              </a>
+            </div>
+            <div class="col-sm-6" style="margin-bottom:20px;">
+              <a href="/team/luka">
+                <h4>Luka</h4>
+              </a>
+            </div>
+            <div class="col-sm-6" style="margin-bottom:20px;">
+              <a href="/team/darya">
+                <h4>Darya</h4>
+              </a>
+            </div>
+          </div>
+        </article>
+        <!-- /Article -->
+
+        <!-- Sidebar -->
+        <aside class="col-sm-4 sidebar sidebar-right">
+          <div class="widget">
+            <h4>Notre projet</h4>
+            <p class="text-muted">
+              Ce site a été réalisé dans le cadre d'un projet de groupe.
+              Cliquez sur un nom pour découvrir le profil de chaque membre.
+            </p>
+          </div>
+        </aside>
+        <!-- /Sidebar -->
+      </div>
+    </div>
+    <!-- /container -->
+
+    {% include("layout/footer.html") %}
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="static/js/headroom.min.js"></script>
+    <script src="static/js/jQuery.headroom.min.js"></script>
+    <script src="static/js/template.js"></script>
+  </body>
+</html>

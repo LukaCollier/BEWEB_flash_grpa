@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+{% include "layout/header.html" %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/paquet.css') }}">
+
+<body>
+
+{% include "layout/nav.html" %}
+
+<header id="head" class="secondary"></header>
+
+<div class="container page-wrapper">
+
+    <ol class="breadcrumb">
+        <li><a href="/">Accueil</a></li>
+        <li><a href="/paquet/choix">Mes paquets</a></li>
+        <li><a href="/cartes/{{ idpaquet }}">Cartes</a></li>
+        <li class="active">{{ "Modifier" if carte else "Ajouter" }} une carte</li>
+    </ol>
+
+    <h1 class="title">{{ "Modifier" if carte else "Ajouter" }} une carte</h1>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="alert alert-{{ category }}">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    <div class="edit-container">
+        <form method="POST">
+            <div class="form-group">
+                <label>Question <span class="text-danger">*</span></label>
+                <textarea name="question" class="form-control" rows="4"
+                    placeholder="Écrivez la question..." required>{{ carte.question if carte else '' }}</textarea>
+            </div>
+            <br>
+            <div class="form-group">
+                <label>Réponse <span class="text-danger">*</span></label>
+                <textarea name="reponse" class="form-control" rows="4"
+                    placeholder="Écrivez la réponse..." required>{{ carte.reponse if carte else '' }}</textarea>
+            </div>
+            <br>
+            <div style="display:flex; justify-content:space-between;">
+                <a href="/cartes/{{ idpaquet }}" class="btn btn-default">Annuler</a>
+                <button type="submit" class="btn btn-action">
+                    {{ "Modifier" if carte else "Ajouter" }}
+                </button>
+            </div>
+        </form>
+    </div>
+
+</div>
+
+{% include "layout/footer.html" %}
+
+</body>
+</html>

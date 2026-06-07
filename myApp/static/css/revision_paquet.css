@@ -1,0 +1,89 @@
+/*********************************************************
+   DURANT LA SESSION DE REVISION 
+  ********************************************************/
+
+/* Carte de flashcard */
+.flashcard {
+    max-width: 850px;
+    min-height: 350px;
+    margin: 50px auto;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 12px 30px rgba(61, 52, 48, 0.12);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px;
+}
+
+/* Contenu de la carte */
+#cardContent {
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 1.5;
+    text-align: center;
+}
+
+
+/* Zone des boutons */
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+
+
+/* Boutons retourner / suivant */
+#flipCard,
+#nextCard {
+    padding: 12px 30px;
+    font-size: 18px;
+    border-radius: 10px;
+}
+
+
+.revision-answer-btn {
+    background: #d84d07;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 10px;
+    font-size: 18px;
+}
+
+
+.revision-next-btn {
+    background: #830372;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 10px;
+    font-size: 18px;
+}
+
+
+.arrow-icon {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+}
+
+
+/* Message de fin de session de révision*/
+.session-finish {
+    font-size: 2rem;
+    color: #098a3f;
+    font-weight: bold;
+}
+
+/* Bouton retour à la page de lancement des révisions */
+#backToRevision {
+    padding: 12px 30px;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: 600;
+    text-decoration: none;
+}

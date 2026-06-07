@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  {%include("layout/header.html") %}
+
+  <body>
+    <!-- Fixed navbar -->
+    {%include("layout/nav.html") %}
+    <!-- /.navbar -->
+
+    <header id="head" class="secondary"></header>
+
+    <!-- container -->
+    <div class="container">
+      <ol class="breadcrumb">
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">A propos de l'équipe</a></li>
+        <li class="active">Darya</li>
+      </ol>
+
+      <div class="row">
+        <!-- Article main content -->
+        <article class="col-sm-8 maincontent">
+          <header class="page-header">
+            <h1 class="page-title">Darya</h1>
+          </header>
+
+          <!-- Photo et intro -->
+          <div class="row" style="margin-bottom:30px;">
+            <div class="col-sm-4">
+              <img src="{{ url_for('static', filename='images/darya.jpg') }}" alt="Darya" class="img-rounded" style="width:100%;" />
+            </div>
+            <div class="col-sm-8">
+              <h3>Qui suis-je ?</h3>
+              <p>Darya ALMOT — Étudiante ingénieure en aéronautique</p>
+              <p style="text-align: justify;">Étudiante ingénieure à l'ENAC, je me passionne pour l'aéronautique et les nouvelles technologies. Curieuse et rigoureuse, je m'implique aussi bien dans mes études que dans la vie associative de l'école.</p>
+            </div>
+          </div>
+
+          <!-- Parcours -->
+          <h3>Parcours</h3>
+          <ul>
+            <li>
+              <strong>2023 - 2025</strong> — Classe préparatoire PCSI puis PC*, Lycée Louis le Grand Paris
+              <p style="text-align: justify;">Culture importante en mathématiques et physique.</p>
+            </li>
+            <li>
+              <strong>2023</strong> — Stage dans un cabinet d'avocat
+              <p style="text-align: justify;">Illustration des qualités rigoureuses pour ce métier, que sont l'assiduité, l'organisation et le pragmatisme.</p>
+            </li>
+            <li>
+              <strong>2020 - 2023</strong> — Baccalauréat Général mention très bien avec félicitations du jury, Lycée Louis Pasteur Neuilly-sur-Seine
+            </li>
+          </ul>
+
+          <!-- Formation -->
+          <h3>Formation</h3>
+          <ul>
+            <li>
+              <strong>Depuis 2025</strong> — Cursus ingénieur, ENAC Toulouse
+            </li>
+            <li>
+              <strong>2023 - 2025</strong> — Classe préparatoire PCSI puis PC*, Lycée Louis le Grand Paris
+            </li>
+            <li>
+              <strong>2020 - 2023</strong> — Baccalauréat Général mention très bien avec félicitations du jury, Lycée Louis Pasteur Neuilly-sur-Seine
+            </li>
+          </ul>
+
+          <!-- Engagement associatif -->
+          <h3>Engagement associatif</h3>
+          <ul>
+            <li>
+              <strong>2025 - aujourd'hui</strong> — Aide au brevet dans les collèges
+            </li>
+            <li>
+              <strong>2025 - aujourd'hui</strong> — Club journalisme de l'ENAC
+            </li>
+            <li>
+              <strong>2025 - aujourd'hui</strong> — Club de jardinage
+            </li>
+            <li>
+              <strong>2025 - aujourd'hui</strong> — Elles bougent (des femmes ingénieures)
+            </li>
+          </ul>
+
+          <a href="/about" class="btn btn-action" style="margin-top:20px;">
+            ← Retour à l'équipe
+          </a>
+
+        </article>
+        <!-- /Article -->
+
+        <!-- Sidebar -->
+        <aside class="col-sm-4 sidebar sidebar-right">
+          <div class="widget">
+            <h4>Contact</h4>
+            <ul class="list-unstyled">
+              <li><a href="mailto:daryaalmot@gmail.com"><i class="fa fa-envelope"></i> daryaalmot@gmail.com</a></li>
+            </ul>
+          </div>
+          <div class="widget">
+            <h4>L'équipe</h4>
+            <ul class="list-unstyled list-spaces">
+              <li><a href="/team/camille">Camille</a></li>
+              <li><a href="/team/etienne">Etienne</a></li>
+              <li><a href="/team/luka">Luka</a></li>
+              <li><a href="/team/darya">Darya</a></li>
+            </ul>
+          </div>
+        </aside>
+        <!-- /Sidebar -->
+      </div>
+    </div>
+    <!-- /container -->
+
+    {% include("layout/footer.html") %}
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="static/js/headroom.min.js"></script>
+    <script src="static/js/jQuery.headroom.min.js"></script>
+    <script src="static/js/template.js"></script>
+  </body>
+</html>

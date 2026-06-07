@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  {%include("layout/header.html") %}
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <body>
+    {%include("layout/nav.html") %}
+
+    <header id="head" class="secondary"></header>
+
+    <div class="container">
+      <ol class="breadcrumb">
+        <li><a href="/">Accueil</a></li>
+        <li class="active">Contact</li>
+      </ol>
+
+      <div class="row">
+        <article class="col-sm-9 maincontent">
+          <header class="page-header">
+            <h1 class="page-title">Contactez-nous !</h1>
+          </header>
+
+          <p>
+            Notre équipe est ravie de répondre à toutes questions ou commentaires que vous pourriez avoir. N'hésitez pas à nous contacter en utilisant le formulaire ci-dessous. Nous sommes impatients de vous entendre !
+          </p>
+          <br />
+          <form>
+            <div class="row">
+              <div class="col-sm-4">
+                <input class="form-control" type="text" placeholder="Nom" />
+              </div>
+              <div class="col-sm-4">
+                <input class="form-control" type="text" placeholder="Adresse email" />
+              </div>
+              <div class="col-sm-4">
+                <input class="form-control" type="text" placeholder="Téléphone" />
+              </div>
+            </div>
+            <br />
+            <div class="row">
+              <div class="col-sm-12">
+                <textarea
+                  placeholder="Tape ton message ici..."
+                  class="form-control"
+                  rows="9"
+                ></textarea>
+              </div>
+            </div>
+            <br />
+            <div class="row">
+              <div class="col-sm-6">
+                <label class="checkbox"
+                  ><input type="checkbox" />S'inscrire à la newsletter</label
+                >
+              </div>
+              <div class="col-sm-6 text-right">
+                <input
+                  class="btn btn-action"
+                  type="submit"
+                  value="envoie ton message"
+                />
+              </div>
+            </div>
+          </form>
+        </article>
+
+        <aside class="col-sm-3 sidebar sidebar-right">
+          <div class="widget">
+            <h4>Adresse</h4>
+            <address>7 Avenue Edouard Belin 31 400 Toulouse</address>
+          </div>
+        </aside>
+      </div>
+    </div>
+
+    <section class="container-full top-space">
+      <div id="map" style="height: 400px; width: 100%;"></div>
+    </section>
+
+    {% include("layout/footermain.html") %}
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="static/js/headroom.min.js"></script>
+    <script src="static/js/jQuery.headroom.min.js"></script>
+    <script src="static/js/template.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+      var map = L.map('map').setView([43.5658, 1.4539], 16);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+      }).addTo(map);
+      L.marker([43.5658, 1.4539]).addTo(map)
+        .bindPopup('7 Avenue Édouard Belin, Toulouse')
+        .openPopup();
+    </script>
+  </body>
+</html>

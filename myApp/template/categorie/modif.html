@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+{% include "layout/header.html" %}
+
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='css/modif_paquet.css') }}">
+
+<body>
+
+{% include "layout/nav.html" %}
+
+<header id="head" class="secondary"></header>
+
+<div class="container">
+
+    <div class="edit-container">
+
+        <h1 class="title">
+            Renommer la catégorie
+        </h1>
+
+        <form method="POST">
+
+            <!-- NOM DU PAQUET -->
+            <div class="form-group">
+
+                <label>Nom de la catégorie</label>
+
+                <input type="text"
+                       name="nomcategorie"
+                       value="{{ categorie.nomcategorie }}"
+                       class="form-control input-edit"
+                       required>
+
+            </div>
+
+            </div>
+
+            <br>
+
+            <!-- BOUTON ENREGISTREMENT MODIFICATION -->
+            <button class="btn-save" type="submit">
+
+                <img src="/static/images/diskette.png"
+                    alt="Enregistrer"
+                    class="icon-save">
+
+                Enregistrer
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+</html>

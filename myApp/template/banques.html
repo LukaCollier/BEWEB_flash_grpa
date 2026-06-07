@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+  {% include("layout/header.html") %}
+  <body>
+    {% include("layout/nav.html") %}
+
+    <header id="head">
+      <div class="container">
+        <div class="row">
+          <h1 class="lead">Banques de flashcards</h1>
+          <p class="tagline">Choisissez une catégorie pour afficher ses cartes.</p>
+        </div>
+      </div>
+    </header>
+
+    <div class="container top-space">
+      {% if error %}
+        <div class="alert alert-danger">{{ error }}</div>
+      {% endif %}
+
+      <div class="row">
+        <div class="col-md-4">
+          <h3>Banques disponibles</h3>
+          <div class="list-group">
+            {% for bank in banks %}
+              <a class="list-group-item {% if selected_bank and selected_bank.id == bank.id %}active{% endif %}" href="{{ url_for('banque_detail', bank_id=bank.id) }}">
+                <strong>{{ bank.name }}</strong>
+                <span class="badge">{{ bank.card_count }}</span>
+              </a>
+            {% else %}
+              <div class="alert alert-info">Aucune banque trouvée dans la base de données.</div>
+            {% endfor %}
+          </div>
+        </div>
+
+        <div class="col-md-8">
+          {% if selected_bank %}
+            <h3>{{ selected_bank.name }}</h3>
+            <p class="text-muted">{{ selected_bank.card_count }} carte(s) disponible(s).</p>
+
+            {% if cards %}
+              <div class="panel panel-default">
+                <div class="panel-heading">Cartes de cette banque</div>
+                <div class="panel-body">
+                  {% for card in cards %}
+                    <div class="well">
+                      <h4>Question</h4>
+                      <p>{{ card.question }}</p>
+                      <h4>Réponse</h4>
+                      <p>{{ card.reponse }}</p>
+                    </div>
+                  {% endfor %}
+                </div>
+              </div>
+            {% else %}
+              <div class="alert alert-warning">Cette banque ne contient pas encore de cartes.</div>
+            {% endif %}
+          {% else %}
+            <div class="jumbotron">
+              <h2>Sélectionnez une banque</h2>
+              <p>Les catégories de la table <strong>categorie</strong> s'affichent ici. Cliquez sur une banque à gauche pour voir ses cartes.</p>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+    {% include("layout/footermain.html") %}
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="{{ url_for('static', filename='js/headroom.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jQuery.headroom.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/template.js') }}"></script>
+  </body>
+</html>

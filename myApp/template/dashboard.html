@@ -1,0 +1,70 @@
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='css/dashboard.css') }}">
+
+<div class="enveloppe">
+<!-- HEADER -->
+  <header class="header">
+    <div class="logo"> Tableau de progression</div>
+    <div class="user">{{session.get('pseudo')}}</div>
+  </header>
+
+  <!-- STATS -->
+  <section class="stats">
+
+    <div class="card cards">
+      <h3>Pourcentage de cartes maîtrisées</h3>
+      <p class="value">{{p_cartes_maitrisees}}</p>
+    </div>
+
+    <div class="card cards">
+      <h3>Vos paquets</h3>
+      <p class="value">{{nb_paquets}}</p>
+    </div>
+    
+    <div class="card cards">
+      <h3>Vos cartes</h3>
+      <p class="value">{{nb_cartes}}</p>
+    </div>
+  </section>
+
+  <div class="graph">
+      <div class="card streak">
+        {% if nb_cartes_a_reviser!=0%}
+        <h3>Nombre de cartes à réviser aujourd'hui</h3>
+        <p>
+          <canvas id="camembert" aria-label="chart" role="img"></canvas>
+          <script>
+              const data = {{ nb_cartes_a_reviser_par_boite | tojson }};
+          </script>
+          <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+          <script src="{{ url_for('static', filename='js/camembert.js') }}"></script>
+        </p>
+        {%else%}      
+          <div class="revision-box-layer">
+            <div class="revision-box">
+              <span class="revision-box-label">Aujourd'hui</span>
+              {% if nbcartes and nbcartes.nb > 0 %}
+              <h2>{{ nbcartes.nb }}</h2>
+              <p>carte{% if nbcartes.nb > 1 %}s{% endif %} à réviser</p>
+              {% else %}
+              <h2>0</h2>
+              <p>Aucune carte à réviser</p>
+              {% endif %}
+            </div>
+          </div>
+        {%endif%}
+      </div>
+
+      <div class="card accuracy">
+        <h3>Distribution des cartes par boîte</h3>
+        <p>
+          <canvas id="camembert" aria-label="chart" role="img"></canvas>
+          <script>
+              const data = {{ nb_cartes_par_boite | tojson }};
+          </script>
+          <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+          <script src="{{ url_for('static', filename='js/camembert.js') }}"></script>
+        </p>
+      </div>
+    </div>
+</div>

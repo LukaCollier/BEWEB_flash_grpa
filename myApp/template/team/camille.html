@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  {%include("layout/header.html") %}
+
+  <body>
+    <!-- Fixed navbar -->
+    {%include("layout/nav.html") %}
+    <!-- /.navbar -->
+
+    <header id="head" class="secondary"></header>
+
+    <!-- container -->
+    <div class="container">
+      <ol class="breadcrumb">
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">A propos de l'équipe</a></li>
+        <li class="active">Camille</li>
+      </ol>
+
+      <div class="row">
+        <!-- Article main content -->
+        <article class="col-sm-8 maincontent">
+          <header class="page-header">
+            <h1 class="page-title">Camille</h1>
+          </header>
+
+          <!-- Photo et intro -->
+          <div class="row" style="margin-bottom:30px;">
+            <div class="col-sm-4">
+              <img src="{{ url_for('static', filename='images/camille.jpg') }}" alt="Camille" class="img-rounded" style="width:100%;" />
+            </div>
+            <div class="col-sm-8">
+              <h3>Qui suis-je ?</h3>
+              <p>Camille Da Silva — Étudiante ingénieure ENAC</p>
+              <p>Étudiante ingénieure à l'ENAC</p>
+            </div>
+          </div>
+
+          <!-- Parcours -->
+          <h3>Parcours professionnel</h3>
+          <ul>
+            <li>
+              <strong>2025 - aujourd'hui</strong> — Construction d'un nanosatellite, Tolosat Toulouse
+              <p style="text-align: justify;">Je participe au projet TOLOSAT, un CubeSat 2U collaboratif développé par un consortium d’étudiants toulousains (ISAE-SUPAERO, ENAC, ENSEEIHT, INSA) sous l’égide de l’association ASTRE et du Centre Spatial Universitaire de Toulouse. L’objectif est de concevoir, développer et qualifi­er un nanosatellite étudiant en vue d’un lancement prévu pour 2028. Dans ce cadre, je travaille au sein du sous-système Iridium, chargé de développer et d'intégrer les télécommunications entre la constellation Iridium et le CubeSat en orbite.</p>
+            </li>
+            <li>
+              <strong>2023</strong> — Stage de mathématiques, Animath Clermont-Ferrand
+              <p style="text-align: justify;">J'ai été sélectionnée pour participer au stage Rendez-vous des jeunes 
+mathématiciennes et informaticiennes, formation intensive en 
+mathématiques favorisant l'approfondissement théorique et 
+l'orientation vers les études scientifiques.</p>
+            </li>
+            <li>
+              <strong>2023</strong> — Stage arts plastiques, FRAC Auvergne Clermont-Ferrand
+              <p style="text-align: justify;">Réalisation d'un triptyque en peinture acrylique au Fonds Régional d'Art Contemporain d'Auvergne, 
+alliant pratique artistique et découverte des collections d'art contemporain.</p>
+            </li>
+            <li>
+              <strong>2022 - 2024</strong> — Saisonnier contrôleur qualité des semences, Limagrain Issoire
+              <p style="text-align: justify;">Réalisation de tests chimiques sur des échantillons agricoles afin de détecter la présence d'agents pathogènes responsables de maladies sur les semences.</p>
+            </li>
+          </ul>
+
+          <!-- Formation -->
+          <h3>Formation</h3>
+          <ul>
+            <li>
+              <strong>Depuis 2025</strong> — Cursus ingénieur, ENAC Toulouse
+            </li>
+            <li>
+              <strong>2023 - 2025</strong> — Classe préparatoire PCSI puis PC, Lycée Du Parc Lyon
+            </li>
+            <li>
+              <strong>2021</strong> — Brevet d'Initiation à l'Aéronautique, Lycée Murat Issoire
+            </li>
+            <li>
+              <strong>2020 - 2023</strong> — Baccalauréat Général mention très bien section européenne anglais, Lycée Murat Issoire
+            </li>
+          </ul>
+          
+          <!-- Engagement associatif -->
+          <h3>Engagement associatif</h3>
+          <ul>
+            <li>
+              <strong>2025 - aujourd'hui</strong> — Vice-présidente du club d'astronomie, ENAC Toulouse
+            </li>
+            <li>
+              <strong>2025 - aujourd'hui</strong> — Tutorat prépa Brevet++, Les Cordées de la Réussite Toulouse
+            </li>
+          </ul>
+          
+
+          <a href="/about" class="btn btn-action" style="margin-top:20px;">
+            ← Retour à l'équipe
+          </a>
+
+        </article>
+        <!-- /Article -->
+
+        <!-- Sidebar -->
+        <aside class="col-sm-4 sidebar sidebar-right">
+          <div class="widget">
+            <h4>Contact</h4>
+            <ul class="list-unstyled">
+              <li><a href="mailto:camille.dasilva.tab@gmail.com"><i class="fa fa-envelope"></i> camille.dasilva.tab@gmail.com</a></li>
+              <li><a href="https://www.linkedin.com/in/camilleda-silva" target="_blank"><i class="fa fa-linkedin"></i> LinkedIn</a></li>
+              <li><a href="https://github.com/CamilleDaSilva" target="_blank"><i class="fa fa-github"></i> GitHub</a></li>
+            </ul>
+          </div>
+          <div class="widget">
+            <h4>L'équipe</h4>
+            <ul class="list-unstyled list-spaces">
+              <li><a href="/team/camille">Camille</a></li>
+              <li><a href="/team/etienne">Etienne</a></li>
+              <li><a href="/team/luka">Luka</a></li>
+              <li><a href="/team/darya">Darya</a></li>
+            </ul>
+          </div>
+        </aside>
+        <!-- /Sidebar -->
+      </div>
+    </div>
+    <!-- /container -->
+
+    {% include("layout/footer.html") %}
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="static/js/headroom.min.js"></script>
+    <script src="static/js/jQuery.headroom.min.js"></script>
+    <script src="static/js/template.js"></script>
+  </body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  {%include("layout/header.html") %}
+
+  <body>
+    <!-- Fixed navbar -->
+    {%include("layout/nav.html") %}
+    <!-- /.navbar -->
+
+    <header id="head" class="secondary"></header>
+
+    <!-- container -->
+    <div class="container">
+      <ol class="breadcrumb">
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">A propos de l'équipe</a></li>
+        <li class="active">Etienne</li>
+      </ol>
+
+      <div class="row">
+        <!-- Article main content -->
+        <article class="col-sm-8 maincontent">
+          <header class="page-header">
+            <h1 class="page-title">Etienne</h1>
+          </header>
+
+          <!-- Photo et intro -->
+          <div class="row" style="margin-bottom:30px;">
+            <div class="col-sm-4">
+              <img src="{{ url_for('static', filename='images/etienne.jpg') }}" alt="Etienne" class="img-rounded" style="width:100%;" />
+            </div>
+            <div class="col-sm-8">
+              <h3>Qui suis-je ?</h3>
+              <p>Étienne Courtès — Élève ingénieur fonctionnaire ENAC</p>
+              <p>Élève ingénieur fonctionnaire à l'ENAC</p>
+            </div>
+          </div>
+
+          <!-- Parcours -->
+          <h3>Parcours professionnel</h3>
+          <ul>
+            <li>
+              <strong>2025 - aujourd'hui</strong> — Chargé de tutorat
+              <p style="text-align: justify;">Tutorat réalisé auprès de lycéens et collégiens : aide aux devoirs, aide à l'orientation et conseils dans l'élaboration d'une méthode de travail.</p>
+            </li>
+            <li>
+              <strong>2025</strong> — Bénévole aux Journées Portes Ouvertes de l'ENAC
+              <p style="text-align: justify;">Orientation des visiteurs vers les différentes activités, visite guidée du campus, présentation du parcours personnel et distribution de paniers repas aux autres bénévoles.</p>
+            </li>
+          </ul>
+
+          <!-- Formation -->
+          <h3>Formation</h3>
+          <ul>
+            <li>
+              <strong>2026</strong> — Certificat de formation à la sûreté aéroportuaire
+            </li>
+            <li>
+              <strong>Depuis 2025</strong> — Élève ingénieur fonctionnaire 1ère année, ENAC Toulouse
+            </li>
+            <li>
+              <strong>2023 - 2025</strong> — Classe préparatoire scientifique
+              <br/>Rang 107 sur 7197 au Concours Communs des Instituts Nationaux Polytechniques
+            </li>
+            <li>
+              <strong>2023</strong> — Baccalauréat général scientifique, mention très bien avec félicitations du jury
+              <br/>Spécialités : Mathématiques, Physique-Chimie, Numérique et Sciences Informatiques
+              <br/>Options : Mathématiques Expertes, Section Européenne Allemande
+            </li>
+          </ul>
+
+          <a href="/about" class="btn btn-action" style="margin-top:20px;">
+            ← Retour à l'équipe
+          </a>
+
+        </article>
+        <!-- /Article -->
+
+        <!-- Sidebar -->
+        <aside class="col-sm-4 sidebar sidebar-right">
+          <div class="widget">
+            <h4>Contact</h4>
+            <ul class="list-unstyled">
+              <li><a href="mailto:etienne.courtes@alumni.enac.fr"><i class="fa fa-envelope"></i> etienne.courtes@alumni.enac.fr</a></li>
+            </ul>
+          </div>
+          <div class="widget">
+            <h4>L'équipe</h4>
+            <ul class="list-unstyled list-spaces">
+              <li><a href="/team/camille">Camille</a></li>
+              <li><a href="/team/etienne">Etienne</a></li>
+              <li><a href="/team/luka">Luka</a></li>
+              <li><a href="/team/darya">Darya</a></li>
+            </ul>
+          </div>
+        </aside>
+        <!-- /Sidebar -->
+      </div>
+    </div>
+    <!-- /container -->
+
+    {% include("layout/footer.html") %}
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="static/js/headroom.min.js"></script>
+    <script src="static/js/jQuery.headroom.min.js"></script>
+    <script src="static/js/template.js"></script>
+  </body>
+</html>

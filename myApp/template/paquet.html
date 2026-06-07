@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+{% include "layout/header.html" %}
+
+<body>
+
+{% include "layout/nav.html" %}
+
+<header id="head" class="secondary"></header>
+
+<div class="container" style="padding-top:40px;">
+
+    <ol class="breadcrumb">
+        <li><a href="/">Accueil</a></li>
+        <li class="active">Paquet</li>
+    </ol>
+
+    <h1 class="page-title">Mes paquets</h1>
+
+    <p>Bienvenue {{ session.get('prenom') }} {{ session.get('nom') }} !</p>
+
+    <p class="text-muted">Choisissez un paquet ou créez-en un nouveau.</p>
+
+    <div style="display:flex; justify-content:center; gap:40px; margin-top:40px; flex-wrap:wrap;">
+
+        <a href="/paquet/choix" style="text-decoration:none; color:inherit;">
+            <div class="panel panel-default" style="width:250px; text-align:center; padding:30px; cursor:pointer; border-radius:15px; transition:all 0.3s;">
+                <img src="{{ url_for('static', filename='images/folder.png') }}"
+                     alt="Choisir"
+                     style="width:80px; height:80px; margin-bottom:15px;">
+                <h3>Choisir</h3>
+            </div>
+        </a>
+
+        <a href="/paquet/creation" style="text-decoration:none; color:inherit;">
+            <div class="panel panel-default" style="width:250px; text-align:center; padding:30px; cursor:pointer; border-radius:15px; transition:all 0.3s;">
+                <img src="{{ url_for('static', filename='images/plus.png') }}"
+                     alt="Créer"
+                     style="width:80px; height:80px; margin-bottom:15px;">
+                <h3>Créer</h3>
+            </div>
+        </a>
+
+    </div>
+
+</div>
+
+{% include "layout/footer.html" %}
+
+
+
+</body>
+</html>
