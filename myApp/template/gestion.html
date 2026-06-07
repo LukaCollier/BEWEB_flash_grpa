@@ -48,7 +48,7 @@
             {% if liste and liste is not none %}
               {% for paquet in liste %}
               <tr>
-                <td><a href="" class="btn btn-danger btn-sm">Consulter</a></td>
+                <td><a href="{{ url_for('cartes', idpaquet=paquet.idpaquet) }}" class="btn btn-danger btn-sm">Consulter</a></td>
                 <td class="gestion-table-name">{{ paquet.nompaquet }}</td>
                 <td><span class="badge gestion-count-badge">{{ paquet.nb_cartes }}</span></td>
               </tr>
