@@ -147,19 +147,20 @@ def copy_public_paquet(idpaquet, idcreateur):
     )
     if not nouveau_idpaquet:
         return None
-    cartes = bddGen.selectData(
-        func_name(),
-        "SELECT question, reponse FROM carte WHERE idpaquet = %s;",
-        (idpaquet,)
-    )
-    for carte in cartes or []:
-        if not bddGen.addData(
+    if not all(
+        bddGen.addData(
             func_name(),
             "INSERT INTO carte(question, reponse, idpaquet) VALUES (%s, %s, %s);",
             (carte["question"], carte["reponse"], nouveau_idpaquet),
             None
-        ):
-            return None
+        )
+        for carte in bddGen.selectData(
+            func_name(),
+            "SELECT question, reponse FROM carte WHERE idpaquet = %s;",
+            (idpaquet,)
+        ) or []
+    ):
+        return None
     return nouveau_idpaquet
 
 def get_nombrecartes_user(idutilisateur):
